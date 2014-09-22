@@ -41,3 +41,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'simple_form'
 
 gem 'obscenity'
+
+#pagination
+gem 'kaminari'
+
+#adds tags to articles
+gem 'acts-as-taggable-on'
