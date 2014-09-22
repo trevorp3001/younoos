@@ -1,0 +1,26 @@
+You Noos
+
+<%= link_to "Submit an article", new_article_path %>
+
+<% @articles.each do |article| %>
+
+		
+			<h3><%= link_to article.headline, article_path(article) %></h3>
+			<p><%= article.story %></p>
+			
+			<ul>
+				<li>creator</li>
+				<li>Category</li>
+				<li><%= link_to "Like", 
+						article_likes_path(article, back_to: "home"),
+						method: :post
+						 %></li>
+				<li><%= link_to pluralize(article.comments.count, "comment"), 
+						article_path(article) %></li>
+				<li><%= pluralize article.likes.count, "like" %></li>
+				<li>pic</li>
+				<li><%= time_ago_in_words article.created_at %></li>
+			</ul>
+		
+
+	<% end %>

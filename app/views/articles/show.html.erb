@@ -1,0 +1,51 @@
+
+
+<h3><%= @article.headline %></h3>
+			<p><%= @article.story %></p>
+			
+			<ul>
+				<li>creator</li>
+				<li>Category</li>
+				<li>comment </h3></li>
+				<li><%= link_to "Like", 
+						article_likes_path(@article),
+						method: :post
+						 %></li>
+				<li><%= pluralize @article.likes.count, "like" %></li>
+				<li>pic</li>
+				<li><%= time_ago_in_words @article.created_at %></li>
+			</ul>
+
+
+	<%= link_to "Edit", edit_article_path(@article), class: "edit" %>
+
+
+	<h3><%= pluralize @article.comments.count, "comment" %> </h3>
+
+	<p>
+		<%= link_to "Add a comment", new_article_comment_path(@article) %>
+	</p>
+
+	<section>
+
+		<%= simple_form_for [@article, @comment] do |form| %>
+
+			<%= form.input :body, label: "comment" %>
+	
+
+			<%= form.button :submit, "Post comment" %>
+
+		<% end %>
+
+	</section>	
+
+	<% @article.comments.each do |comment|%>
+
+		<div class="comment">
+			<%= simple_format comment.body %>
+			<p><%=  comment.created_at %> ago</p>
+
+
+		</div>
+
+	<% end %>
