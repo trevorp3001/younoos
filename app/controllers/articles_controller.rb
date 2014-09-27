@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
 
+	before_action :make_sure_logged_in, except: [:index, :show]
+
 	before_action :find_article, only: [:show, :edit, :update, :destroy]
 
 	def index
@@ -20,13 +22,13 @@ class ArticlesController < ApplicationController
 
 	def new
 
-		@article = Article.new
+		@article = current_user.articles.new
 
 	end
 
 	def create
 
-		@article = Article.new(article_params)
+		@article = current_user.articles.new(article_params)
 
 		if @article.save
 
@@ -44,12 +46,12 @@ class ArticlesController < ApplicationController
 	end
 
 	def edit
-		#@article = Article.find(params[:id])
+		@article = current_user.articles.find(params[:id])
 	end
 
 	
 	def update
-		#@article = Article.find(params[:id])
+		@article = current_user.articles.find(params[:id])
 
 		if @article.update(article_params)
 
@@ -63,7 +65,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def destroy
-		#@article = Article.find(params[:id])
+		@article = current_user.articles.find(params[:id])
 
 		@article.destroy
 

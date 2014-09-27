@@ -6,10 +6,15 @@ Rails.application.routes.draw do
 
   	resources :likes
 
+  	resources :users
+
 
   end
 
+  resources :users
 
+ 
+  resource :session
 
 
   root "articles#index"

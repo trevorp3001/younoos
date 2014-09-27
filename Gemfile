@@ -47,3 +47,16 @@ gem 'kaminari'
 
 #adds tags to articles
 gem 'acts-as-taggable-on'
+
+#pics
+gem 'paperclip'
+gem 'aws-sdk'
+
+#social logins
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-linkedin'
+
+#add admin centre/ cms
+gem 'activeadmin', github: 'gregbell/active_admin'
