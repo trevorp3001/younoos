@@ -1,8 +1,12 @@
+<h1>Sign up</h1>
+
+<p><%= link_to "or Sign in", new_session_path %></p>
+
 <%= simple_form_for @user do |form| %>
 
 	<%= form.input :name %>
-	
 	<%= form.input :email %>
+	<%= form.input :avatar %>
 	<%= form.input :password %>
 	<%= form.input :password_confirmation %>
 

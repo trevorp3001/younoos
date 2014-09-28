@@ -1,5 +1,6 @@
 
 
+<%= image_tag @room.image(:large) %>
 <h3><%= @article.headline %></h3>
 			<p><%= @article.story %></p>
 			
@@ -33,11 +34,10 @@
 
 	<h3><%= pluralize @article.comments.count, "comment" %> </h3>
 
-	<p>
-		<%= link_to "Add a comment", new_article_comment_path(@article) %>
-	</p>
-
+	
 	<section>
+
+		<% if current_user.present? %>
 
 		<%= simple_form_for [@article, @comment] do |form| %>
 
@@ -45,6 +45,12 @@
 	
 
 			<%= form.button :submit, "Post comment" %>
+
+		<% end %>
+
+		<% else %>
+
+		<p><%= link_to "Sign in", new_session_path %> to add comment</p>
 
 		<% end %>
 

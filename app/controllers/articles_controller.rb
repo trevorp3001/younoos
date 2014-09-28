@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
 
 	before_action :make_sure_logged_in, except: [:index, :show]
 
-	before_action :find_article, only: [:show, :edit, :update, :destroy]
+	#before_action :find_article, only: [:show, :edit, :update, :destroy]
 
 	def index
 		@username = "trev"
@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def show
-		#@article = Article.find(params[:id])
+		@article = Article.find(params[:id])
 
 		@comment = @article.comments.new
 
@@ -79,7 +79,7 @@ class ArticlesController < ApplicationController
 
 
 	def article_params
-		params.require(:article).permit(:headline, :story, :tag_list)
+		params.require(:article).permit(:headline, :story, :tag_list, :image, :location)
 	end
 
 	def find_article

@@ -10,25 +10,28 @@
 	<div>
 		<header>
 			<h1>
-
+				YouNoos
 			</h1>
 
 			<nav>
 
 				<% if current_user.present? %>
 
-		        
+		        <%= image_tag current_user.avatar(:thumbnail) %>
+
 		        <strong><%= current_user.name %></strong>
 
 		        <%= link_to "Dashboard", "#" %>
-		        <%= link_to "Add an article", new_article_path %>
-		        <%= link_to "Orders", "#" %>
+		        <%= link_to "Submit an article", new_article_path %>
+		        <%= link_to "My Articles", "#" %>
 		        <%= link_to "Log out", session_path, method: :delete %>
 
 		      <% else %>
 
-		        <%= link_to "Sign up", "#" %>
+		        <%= link_to "Submit an article", new_article_path %>
+		        <%= link_to "Sign up", new_user_path %>
 		        <%= link_to "Sign in", new_session_path %>
+
 
 		      <% end %>
 

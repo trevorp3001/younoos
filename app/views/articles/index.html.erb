@@ -1,10 +1,10 @@
-You Noos
 
-<%= link_to "Submit an article", new_article_path %>
+
 
 <% @articles.each do |article| %>
 
 		
+			<%= image_tag article.image(:thumbnail) %>
 			<h3><%= link_to article.headline, article_path(article) %></h3>
 			<p><%= article.story %></p>
 			
